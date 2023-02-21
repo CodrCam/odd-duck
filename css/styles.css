@@ -1,0 +1,50 @@
+body {
+  font-family: 'Biryani', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background-color: thistle;
+  padding: 3%;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  background: linear-gradient(to right, #322331, #8c5789, #815a7e, #b589b2, #d8c7d7, #f78d8d);
+  padding: 2%;
+  margin-top: 5%;
+}
+
+#img-container {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #322331;
+}
+
+ul {
+  color: azure;
+  width: max-content;
+  background-color: #322331;
+}
+
+li {
+  line-height: 40px;
+}
+
+img {
+  height: 400px;
+  width: 400px;
+  border: #f78d8d;
+  border: solid;
+  border-width: 4px;
+  border-image: linear-gradient(
+    hsl(241, 94%, 49%),
+    hsl(247, 87%, 59%),
+    hsl(241, 79%, 61%),
+    hsl(247, 84%, 70%),
+    hsl(243, 72%, 77%),
+    hsl(299, 76%, 77%),
+    hsl(307, 81%, 71%),
+    hsl(306, 80%, 60%),
+  ) 1;
+}
