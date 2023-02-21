@@ -18,7 +18,7 @@ let resultList = document.getElementById('results-container');
 function Product(name, fileExtension = 'jpg'){
   this.name = name;
   this.image = `assets/${name}.${fileExtension}`;
-  this.timesShown = 0;
+  this.views = 0;
   this.votes = 0;
 }
 
