@@ -54,6 +54,48 @@ function randomIndex(){
   return Math.floor(Math.random() * productArray.length);
 }
 
+function displayResultsInBarGraph() {
+  // Prepare data for the bar chart
+  const productNames = productArray.map(product => product.name);
+  const productVotes = productArray.map(product => product.votes);
+  const productViews = productArray.map(product => product.views);
+
+  // Create the bar chart
+  const chartData = {
+    labels: productNames,
+    datasets: [
+      {
+        label: 'Votes',
+        data: productVotes,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      },
+      {
+        label: 'Views',
+        data: productViews,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }
+    ]
+  };
+
+  const chartOptions = {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  };
+
+  const barChart = new Chart(resultList, {
+    type: 'bar',
+    data: chartData,
+    options: chartOptions
+  });
+}
+
 function handleImageClicks (event){
   let imgClicked = event.target.title;
   console.dir(imgClicked);
@@ -83,6 +125,9 @@ function ShowResults(){
       resultList.appendChild(productListItem);
     }
     resultsButton.removeEventListener('click', ShowResults);
+
+    // Display the survey results in a bar graph
+    displayResultsInBarGraph();
   }
 }
 
