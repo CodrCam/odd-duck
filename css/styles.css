@@ -52,6 +52,6 @@ img {
 }
 
 #results-container {
-  width: 800px;
+  width: 100%;
   height: fit-content;
 }
