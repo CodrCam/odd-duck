@@ -12,6 +12,10 @@ let imgThree = document.getElementById('img-three');
 let resultsButton = document.getElementById('show-results');
 let resultList = document.getElementById('results-container');
 
+// Create a canvas element for the bar chart
+let canvas = document.createElement('canvas');
+canvas.id = 'results-chart';
+resultList.appendChild(canvas);
 
 //constructor funtion
 
@@ -25,30 +29,32 @@ function Product(name, fileExtension = 'jpg'){
 //** Helper functions **/
 
 //Shows 3 functions and makes sure they're not the same//
+let previousSet = [];
 function renderImg(){
-  let imgOneIndex = randomIndex();
-  let imgTwoIndex = randomIndex();
-  let imgThreeIndex =randomIndex();
-
-
-  while (imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex){
+  let imgOneIndex, imgTwoIndex, imgThreeIndex;
+  do {
+    imgOneIndex = randomIndex();
     imgTwoIndex = randomIndex();
     imgThreeIndex = randomIndex();
-  }
-      imgOne.src = productArray[imgOneIndex].image;
-      imgOne.title = productArray[imgOneIndex].name;
-      imgOne.alt = `This is an image of ${productArray[imgOneIndex].name}`;
-      imgTwo.src = productArray[imgTwoIndex].image;
-      imgTwo.title = productArray[imgTwoIndex].name;
-      imgTwo.alt = `This is an image of ${productArray[imgTwoIndex].name}`;
-      imgThree.src = productArray[imgThreeIndex].image;
-      imgThree.title = productArray[imgThreeIndex].name;
-      imgThree.alt = `This is an image of ${productArray[imgThreeIndex].name}`;
+  } while (imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex || previousSet.includes(imgOneIndex) || previousSet.includes(imgTwoIndex) || previousSet.includes(imgThreeIndex));
 
-      productArray[imgOneIndex].views++;
-      productArray[imgTwoIndex].views++;
-      productArray[imgThreeIndex].views++;
-  }
+  imgOne.src = productArray[imgOneIndex].image;
+  imgOne.title = productArray[imgOneIndex].name;
+  imgOne.alt = `This is an image of ${productArray[imgOneIndex].name}`;
+  imgTwo.src = productArray[imgTwoIndex].image;
+  imgTwo.title = productArray[imgTwoIndex].name;
+  imgTwo.alt = `This is an image of ${productArray[imgTwoIndex].name}`;
+  imgThree.src = productArray[imgThreeIndex].image;
+  imgThree.title = productArray[imgThreeIndex].name;
+  imgThree.alt = `This is an image of ${productArray[imgThreeIndex].name}`;
+
+  productArray[imgOneIndex].views++;
+  productArray[imgTwoIndex].views++;
+  productArray[imgThreeIndex].views++;
+
+  previousSet = [imgOneIndex, imgTwoIndex, imgThreeIndex];
+}
+
 
 function randomIndex(){
   return Math.floor(Math.random() * productArray.length);
@@ -89,7 +95,7 @@ function displayResultsInBarGraph() {
     }
   };
 
-  const barChart = new Chart(resultList, {
+  const barChart = new Chart(canvas, {
     type: 'bar',
     data: chartData,
     options: chartOptions
