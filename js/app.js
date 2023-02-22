@@ -12,6 +12,10 @@ let imgThree = document.getElementById('img-three');
 let resultsButton = document.getElementById('show-results');
 let resultList = document.getElementById('results-container');
 
+// Create a canvas element for the bar chart
+let canvas = document.createElement('canvas');
+canvas.id = 'results-chart';
+resultList.appendChild(canvas);
 
 //constructor funtion
 
@@ -89,12 +93,13 @@ function displayResultsInBarGraph() {
     }
   };
 
-  const barChart = new Chart(resultList, {
+  const barChart = new Chart(canvas, {
     type: 'bar',
     data: chartData,
     options: chartOptions
   });
 }
+
 
 function handleImageClicks (event){
   let imgClicked = event.target.title;
