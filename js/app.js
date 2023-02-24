@@ -185,3 +185,9 @@ resultsButton.addEventListener('click', ShowResults);
 if (votingRounds === 0) {
   localStorage.setItem('productArray', JSON.stringify(productArray));
 }
+
+//redirects to results page
+function redirectToNewPage() {
+  window.location = "results.html";
+}
+
