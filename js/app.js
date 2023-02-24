@@ -135,39 +135,53 @@ function ShowResults(){
 
     // Display the survey results in a bar graph
     displayResultsInBarGraph();
+    // Call local storage save function when voting rounds reach zero
+if (votingRounds === 0) {
+  localStorage.setItem('productArray', JSON.stringify(productArray));
+}
   }
 }
 
 //Executable Code
 
-let bagItem = new Product('bag');
-let bananaItem = new Product('banana');
-let bathroomItem = new Product('bathroom');
-let bootsItem = new Product('boots');
-let breakfastItem = new Product('breakfast');
-let bubblegumItem = new Product('bubblegum');
-let chairItem = new Product('chair');
-let cthulhuItem = new Product('cthulhu');
-let dogduckItem = new Product('dog-duck');
-let dragonItem = new Product('dragon');
-let penItem = new Product('pen');
-let petsweepItem = new Product('pet-sweep');
-let scissorsItem = new Product('scissors');
-let sharkItem = new Product('shark');
-let sweepItem = new Product('sweep', 'png');
-let tauntaunItem = new Product('tauntaun');
-let unicornItem = new Product('unicorn');
-let watercanItem = new Product('water-can');
-let wineglassItem = new Product('wine-glass');
 
-productArray.push(bagItem,bananaItem,bathroomItem,bootsItem,breakfastItem,bubblegumItem,chairItem,cthulhuItem,dogduckItem,dragonItem,penItem,petsweepItem,scissorsItem,sharkItem,sweepItem,tauntaunItem,unicornItem,watercanItem,wineglassItem);
+// ** Code to save and retrieve product array from local storage **
+const savedProductArray = JSON.parse(localStorage.getItem('productArray'));
 
+if (savedProductArray !== null) {
+  // If a saved product array is found in local storage, assign it to the global productArray variable
+  productArray = savedProductArray;
+} else {
+  // Otherwise, create a new product array
+  let bagItem = new Product('bag');
+  let bananaItem = new Product('banana');
+  let bathroomItem = new Product('bathroom');
+  let bootsItem = new Product('boots');
+  let breakfastItem = new Product('breakfast');
+  let bubblegumItem = new Product('bubblegum');
+  let chairItem = new Product('chair');
+  let cthulhuItem = new Product('cthulhu');
+  let dogduckItem = new Product('dog-duck');
+  let dragonItem = new Product('dragon');
+  let penItem = new Product('pen');
+  let petsweepItem = new Product('pet-sweep');
+  let scissorsItem = new Product('scissors');
+  let sharkItem = new Product('shark');
+  let sweepItem = new Product('sweep', 'png');
+  let tauntaunItem = new Product('tauntaun');
+  let unicornItem = new Product('unicorn');
+  let watercanItem = new Product('water-can');
+  let wineglassItem = new Product('wine-glass');
+
+  productArray.push(bagItem,bananaItem,bathroomItem,bootsItem,breakfastItem,bubblegumItem,chairItem,cthulhuItem,dogduckItem,dragonItem,penItem,petsweepItem,scissorsItem,sharkItem,sweepItem,tauntaunItem,unicornItem,watercanItem,wineglassItem);
+}
 renderImg();
 
 imgContainer.addEventListener('click', handleImageClicks);
 resultsButton.addEventListener('click', ShowResults);
-// Redirect to a new page
-function redirectToNewPage() {
-  window.location = "results.html";
-}
 
+
+// Call local storage save function when voting rounds reach zero
+if (votingRounds === 0) {
+  localStorage.setItem('productArray', JSON.stringify(productArray));
+}
