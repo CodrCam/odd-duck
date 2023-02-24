@@ -28,6 +28,11 @@ function Product(name, fileExtension = 'jpg'){
 
 //** Helper functions **/
 
+//redirects to results page
+function redirectToNewPage() {
+  window.location = "http://127.0.0.1:5555/results.html";
+}
+
 
 //Shows 3 functions and makes sure they're not the same//
 let previousSet = [];
@@ -180,14 +185,10 @@ renderImg();
 imgContainer.addEventListener('click', handleImageClicks);
 resultsButton.addEventListener('click', ShowResults);
 
-
 // Call local storage save function when voting rounds reach zero
 if (votingRounds === 0) {
   localStorage.setItem('productArray', JSON.stringify(productArray));
 }
 
-//redirects to results page
-function redirectToNewPage() {
-  window.location = "results.html";
-}
+
 
