@@ -28,6 +28,7 @@ function Product(name, fileExtension = 'jpg'){
 
 //** Helper functions **/
 
+
 //Shows 3 functions and makes sure they're not the same//
 let previousSet = [];
 function renderImg(){
@@ -165,5 +166,8 @@ renderImg();
 
 imgContainer.addEventListener('click', handleImageClicks);
 resultsButton.addEventListener('click', ShowResults);
-
+// Redirect to a new page
+function redirectToNewPage() {
+  window.location = "results.html";
+}
 
