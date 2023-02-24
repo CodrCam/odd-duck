@@ -1,5 +1,9 @@
 # The Odd Duck 
 
+## Accessability Test
+
+![Access](/assets/Screenshot%202023-02-23%20at%204.54.15%20PM.png)
+
 ## Explanation
 
 Whenever an employee walks by, the employee can vote for 1 of the 3 products displayed that they think should be the next new product brought to market. After a week of collecting data, they would like some nice graphs to visualize the results.
